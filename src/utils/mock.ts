@@ -14,20 +14,6 @@ const produtos = [
     ]
   },
   {
-    categoria: 'Comida',
-    items: [
-      {
-        id: 2,
-        titulo: 'Produto Julio',
-        preco: '30,00R$',
-        imageUrl: 'url_da_imagem_2',
-        rating: 4.0,
-        promotion: '5% OFF'
-      },
-      // ... outros produtos de comida
-    ]
-  },
-  {
     categoria: 'Sobremessa',
     items: [
       {
@@ -41,6 +27,21 @@ const produtos = [
       // ... outros petiscos
     ]
   }
+  ,
+  {
+    categoria: 'Comida',
+    items: [
+      {
+        id: 2,
+        titulo: 'Produto',
+        preco: '30,00R$',
+        imageUrl: 'url_da_imagem_2',
+        rating: 4.0,
+        promotion: '5% OFF'
+      },
+      // ... outros produtos de comida
+    ]
+  },
 ]
 
 export { produtos };
