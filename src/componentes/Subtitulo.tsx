@@ -1,14 +1,14 @@
 import { Text, ITextProps } from "native-base"
 import { ReactNode } from "react"
 
-interface TituloProps extends ITextProps {
+interface SubtituloProps extends ITextProps {
   children: ReactNode
 }
 
-export function Titulo({ children, ...rest }: TituloProps){
+export function Subtitulo({ children, ...rest }: SubtituloProps){
   return (
     <Text
-        fontSize="20"
+        fontSize="25"
         fontWeight="bold"
         color="black"
         textAlign="center"

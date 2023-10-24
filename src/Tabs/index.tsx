@@ -10,10 +10,10 @@ const Tab = createBottomTabNavigator()
 
 const screenOptions = {
   tabBarStyle: {
-    backgroundColor: "#002851"
+    backgroundColor: "#FFFFFF" // Mudando a cor de fundo para branco
   },
-  tabBarActiveTintColor: "#339cff",
-  tabBarInactiveTintColor: "#FFF"
+  tabBarActiveTintColor: "#FF8A00", // Cor laranja para o ícone ativo
+  tabBarInactiveTintColor: "#FF8A00" // Cor laranja para o ícone inativo
 }
 
 const tabs = [

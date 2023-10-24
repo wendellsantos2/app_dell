@@ -5,22 +5,27 @@ const secoes = [
     entradaTexto: [
       {
         id: 1,
+        label: 'Perfil',
+        placeholder: 'Coloque sua foto do perfil'
+      },
+      {
+        id: 2,
         label: 'Nome',
         placeholder: 'Digite seu nome completo'
       },
       {
-        id: 2,
+        id: 3,
         label: 'Email',
         placeholder: 'Digite seu email'
       },
       {
-        id: 3,
+        id: 4,
         label: 'Crie uma senha',
         placeholder: 'Insira sua senha',
         secureTextEntry: true,
       },
       {
-        id: 4,
+        id: 5,
         label: 'Confirme sua senha',
         placeholder: 'Insira sua senha',
         secureTextEntry: true,
@@ -30,7 +35,8 @@ const secoes = [
   },
   {
     id: 2,
-    titulo: 'Agora, mais alguns dados sobre você:',
+    titulo: 'Finalize o cadastro para comprar',
+
     entradaTexto: [
       {
         id: 1,
