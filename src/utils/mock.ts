@@ -1,19 +1,46 @@
-const depoimentos = [
+const produtos = [
   {
-    id: 1,
-    titulo: 'Júlio, 40 anos, São Paulo/SP.',
-    text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.',
+    categoria: 'Cerveja',
+    items: [
+      {
+        id: 1,
+        titulo: 'Cherry Healthy',
+        preco: '25,00R$',
+        imageUrl: 'url_da_imagem_1',
+        rating: 4.5,
+        promotion: '10% OFF'
+      },
+      // ... outros produtos de cerveja
+    ]
   },
   {
-    id: 2,
-    titulo: 'Júlio, 40 anos, São Paulo/SP.',
-    text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.',
+    categoria: 'Comida',
+    items: [
+      {
+        id: 2,
+        titulo: 'Produto Julio',
+        preco: '30,00R$',
+        imageUrl: 'url_da_imagem_2',
+        rating: 4.0,
+        promotion: '5% OFF'
+      },
+      // ... outros produtos de comida
+    ]
   },
   {
-    id: 3,
-    titulo: 'Júlio, 40 anos, São Paulo/SP.',
-    text: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.',
+    categoria: 'Sobremessa',
+    items: [
+      {
+        id: 3,
+        titulo: 'Produto SP',
+        preco: '35,00R$',
+        imageUrl: 'url_da_imagem_3',
+        rating: 4.3,
+        promotion: '15% OFF'
+      },
+      // ... outros petiscos
+    ]
   }
 ]
 
-export { depoimentos }
+export { produtos };

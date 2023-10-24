@@ -1,31 +1,89 @@
-import { VStack, Box, ScrollView, Text, Divider } from "native-base";
- 
-import { Titulo } from "../componentes/Titulo";
-import { depoimentos } from "../utils/mock";
+import React, { useState } from 'react';
+import {
+  VStack, Box, Text, Divider, HStack, Image, Spacer, Icon
+} from 'native-base';
+import { MaterialIcons } from '@expo/vector-icons';
+import Swiper from 'react-native-swiper';
 
+import { Titulo } from '../componentes/Titulo';
+import { produtos } from '../utils/mock';
 
-export default function Principal(){
+export default function Principal() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const renderStars = (rating: number) => {
+    let stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <Icon
+          as={MaterialIcons}
+          name={i <= rating ? 'star' : 'star-border'}
+          color="yellow.400"
+          size="sm"
+          key={i}
+        />
+      );
+    }
+    return stars;
+  };
 
   return (
-    <ScrollView flex={1} bgColor="white">
-      <VStack flex={1} alignItems="flex-start" justifyContent="flex-start" p={5}>
+    <VStack flex={1} alignItems="flex-start" justifyContent="flex-start" p={5}>
+      <Titulo color="black">Bastilha BarMarket!</Titulo>
+      <HStack space={4} marginTop={5}>  
+        {produtos.map((categoria, index) => (
+          <Text
+          marginTop={15}
+            key={index}
+            onPress={() => setActiveIndex(index)}
+            fontSize="25"
+            fontWeight={activeIndex === index ? "bold" : "normal"} // Adicionada esta linha
+            borderBottomWidth={activeIndex === index ? 2 : 0}
+            borderBottomColor="black"
+          >
+            {categoria.categoria}
+          </Text>
+        ))}
+      </HStack>
+
+
+      <Swiper
+        loop={false}
+        showsButtons={false}  
+        showsPagination={false}
+        index={activeIndex}
+        onIndexChanged={(index) => setActiveIndex(index)}
+      >
+        {produtos.map((categoria) => (
+          <VStack key={categoria.categoria} space={3} divider={<Divider />} w="100%">
         
-        <Titulo color="blue.500">Boas-vindas!</Titulo>
- 
-        <Titulo color="blue.800" alignSelf="center">Depoimentos</Titulo>
-        <VStack space={3} divider={<Divider />} w="100%">
-          {
-            depoimentos.map(depoimento => (
-              <Box key={depoimento.id} w="100%" borderRadius="lg" p={3}>
-                <Text color="gray.300" fontSize="md" textAlign="justify">
-                  {depoimento.text}
-                </Text>
-                <Text color="gray.500" fontSize="lg" fontWeight="bold" alignSelf="center" mt="2">{depoimento.titulo}</Text>
+
+            {categoria.items.map((produto) => (
+              <Box key={produto.id} w="100%" borderRadius="lg" p={3} bg="gray.50" mb={4}>
+                <HStack space={3}>
+                  <Image
+                    source={{ uri: produto.imageUrl }}
+                    alt={produto.titulo}
+                    size="sm"
+                    borderRadius="lg"
+                  />
+                  <VStack>
+                    <Text color="gray.700" fontWeight="bold" fontSize="lg">
+                      {produto.titulo}
+                    </Text>
+                    <Text color="gray.500" fontSize="md">{produto.preco}</Text>
+                    <HStack>
+                      {renderStars(produto.rating)}
+                      <Spacer />
+                      <Text color="green.500">{produto.promotion}</Text>
+                    </HStack>
+                  </VStack>
+                </HStack>
               </Box>
-            ))
-          }
-        </VStack>
-      </VStack>
-    </ScrollView>
+            ))}
+          </VStack>
+        ))}
+      </Swiper>
+    </VStack>
   );
 }
