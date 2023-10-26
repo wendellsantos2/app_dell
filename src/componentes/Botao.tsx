@@ -12,10 +12,13 @@ export function Botao({ children, autoSize = false, color, ...rest }: ButtonProp
   return (
     <Button
       w={autoSize ? 'auto' : '100%'}
-      bg={color || 'white'}
+      bg={color || 'black'}
       mt={10}
-      borderRadius="lg"
-      _text={{ color: 'black' }}
+      borderRadius={9999}
+
+      _text={{ color: 'white' }}
+      _pressed={{ bg: "gray.300" }} // Isso faz com que o botão fique cinza quando pressionado
+
       {...rest}
     >
       {children}

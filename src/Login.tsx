@@ -1,5 +1,5 @@
-import React from 'react';
-import { VStack, Image, Text, Box, Link, Flex, View, HStack } from 'native-base';
+import React, { useState } from 'react';
+import { VStack, Image, Text, Box, Link, Flex, View, HStack, Divider } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import Logo from './assets/google21.jpg';
 import { Botao } from './componentes/Botao';
@@ -9,9 +9,7 @@ import { Titulo } from './componentes/Titulo';
 import { SocialIcon } from 'react-native-elements'; // Importe o SocialIcon
 import Icon from 'react-native-vector-icons/FontAwesome'; // Importe o ícone do Twitter
 
-// Importe as bibliotecas de autenticação social
-import * as GoogleAuthentication from 'expo-google-app-auth';
-import * as FacebookAuthentication from 'expo-facebook';
+ 
 
 export default function Login({ navigation }: any) {
   // Função para fazer login com o Google
@@ -29,72 +27,63 @@ export default function Login({ navigation }: any) {
     // Adicione aqui a lógica para fazer login com o Twitter
     console.log('Login com o Twitter');
   };
+  const [isRegistering, setIsRegistering] = useState(false);
+  const toggleRegistrationMode = () => {
+    setIsRegistering(!isRegistering);
+  };
+  const [selectedTab, setSelectedTab] = useState<'login' | 'register'>('login');
 
   return (
-    <VStack flex={1} alignItems="center" justifyContent="center" p={5} backgroundColor="white">
-      <Image source={Logo} alt="Logo Voll" />
-      <Titulo>Faça login em sua conta</Titulo>
-
-      <Box>
-        <EntradaTexto label="Email" placeholder="Insira seu endereço de e-mail" />
-        <EntradaTexto label="Senha" placeholder="Insira sua senha" />
-      </Box>
-
-      <Botao onPress={() => navigation.navigate('Tabs')}>Entrar</Botao>
-
-      <HStack space={2} marginTop={11} justifyContent="center">
-  <TouchableOpacity onPress={loginWithGoogle}>
-    <SocialIcon
-      button
-      type="google"
-      onPress={loginWithGoogle}
-      iconSize={36}
-      style={{ borderRadius: 100, width: 60, height: 60 }}
-    />
-  </TouchableOpacity>
-
-  <TouchableOpacity onPress={loginWithFacebook}>
-    <SocialIcon
-      button
-      type="facebook"
-      onPress={loginWithFacebook}
-      iconSize={36}
-      style={{ borderRadius: 100, width: 60, height: 60 }}
-    />
-  </TouchableOpacity>
-
-  <TouchableOpacity onPress={loginWithTwitter}>
-    <View
-      style={{
-        backgroundColor: 'white',
-        width: 60,
-        height: 60,
-        borderRadius: 100,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop:5
-      }}
+    <VStack flex={1} p={5}>
+    <VStack 
+        flex={1} 
+        alignItems="center" 
+        justifyContent="center" 
+        backgroundColor="white" 
+        borderRadius="40"  // Bordas arredondadas
     >
-      <Icon
-    
-        name="twitter"
-        size={36}
-        color="#1DA1F2"
-      />
-    </View>
-  </TouchableOpacity>
-</HStack>
+        <Image source={Logo} alt="Logo Voll" alignSelf="center" />
 
+        <HStack space={4} mt={5} justifyContent="center">
+            <TouchableOpacity onPress={() => setSelectedTab('login')}>
+                <Text fontSize={24} borderBottomWidth={selectedTab === 'login' ? 2 : 0} borderBottomColor="blue.500">Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setSelectedTab('register')}>
+                <Text fontSize={24} borderBottomWidth={selectedTab === 'register' ? 2 : 0} borderBottomColor="blue.500">Cadastro</Text>
+            </TouchableOpacity>
+        </HStack>
+    </VStack>
+    <Divider mt={3} />
 
+      {selectedTab === 'login' && (
+        <Box flex={1} alignItems="center" justifyContent="center">
+      
+          <Box>
+            <EntradaTexto label="Email" placeholder="Insira seu endereço de e-mail" />
+            <EntradaTexto label="Senha" placeholder="Insira sua senha" />
+          </Box>
 
-      <Box w="100%" flexDirection="row" justifyContent="center" mt={8}>
-        <Text>Ainda não tem cadastro? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-          <Text color="blue.500">Faça seu cadastro!</Text>
-        </TouchableOpacity>
-      </Box>
+          <Botao onPress={() => navigation.navigate('Tabs')}>Entrar</Botao>
 
-      <Link href='https://www.alura.com.br' mt={2}>Esqueceu sua senha?</Link>
+         
+
+          <Link href='https://www.alura.com.br' mt={2}>Esqueceu sua senha?</Link>
+        </Box>
+      )}
+
+      {selectedTab === 'register' && (
+        <Box flex={1} alignItems="center" justifyContent="center">
+ 
+
+          <Box>
+            <EntradaTexto label="Nome" placeholder="Insira seu nome completo" />
+            <EntradaTexto label="Email" placeholder="Insira seu endereço de e-mail" />
+            <EntradaTexto label="Senha" placeholder="Insira uma senha" />
+          </Box>
+
+          <Botao onPress={() => navigation.navigate('Tabs')}>Cadastrar</Botao>
+        </Box>
+      )}
     </VStack>
   );
 }

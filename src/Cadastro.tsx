@@ -9,6 +9,7 @@ import { Titulo } from './componentes/Titulo';
 import { secoes } from './utils/CadastroEntradaTexto';
 import { EntradaTextoCadastro } from './componentes/EntradaTextoCadastro';
 import { FotoPerfil } from './componentes/FotoPerfil';
+import { EntradaTexto } from './componentes/EntradaTexto';
 
 type NavigationProps = {
   navigation: StackNavigationProp<any>;
@@ -72,7 +73,7 @@ export default function Cadastro({ navigation }: NavigationProps) {
         <Box>
           {
             secoes[numSecao]?.entradaTexto?.map(entrada => {
-              return <EntradaTextoCadastro label={entrada.label} placeholder={entrada.placeholder} key={entrada.id} />
+              return <EntradaTexto label={entrada.label} placeholder={entrada.placeholder} key={entrada.id} />
             })
           }
         </Box>
