@@ -1,7 +1,7 @@
 import React from 'react';
 import { VStack, Image, Text, Box, Link, Flex, View, HStack } from 'native-base';
 import { TouchableOpacity } from 'react-native';
-import Logo from './assets/LogoDell.png';
+import Logo from './assets/google21.jpg';
 import { Botao } from './componentes/Botao';
 import { EntradaTexto } from './componentes/EntradaTexto';
 import { Titulo } from './componentes/Titulo';
@@ -31,7 +31,7 @@ export default function Login({ navigation }: any) {
   };
 
   return (
-    <VStack flex={1} alignItems="center" justifyContent="center" p={5} backgroundColor="#FF8A00">
+    <VStack flex={1} alignItems="center" justifyContent="center" p={5} backgroundColor="white">
       <Image source={Logo} alt="Logo Voll" />
       <Titulo>Faça login em sua conta</Titulo>
 

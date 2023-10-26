@@ -1,6 +1,6 @@
 import { VStack, Box, ScrollView } from "native-base";
 import { Botao } from "../componentes/Botao";
-import { CardConsulta } from "../componentes/CardConsulta";
+import { CardConsulta } from "../componentes/CardProduto";
 import { EntradaTexto } from "../componentes/EntradaTexto";
 import { Titulo } from "../componentes/Titulo";
 

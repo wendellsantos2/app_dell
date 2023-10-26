@@ -1,6 +1,6 @@
 import { VStack, Divider, ScrollView } from 'native-base'
 import { Botao } from '../componentes/Botao'
-import { CardConsulta } from '../componentes/CardConsulta'
+import { CardConsulta } from '../componentes/CardProduto'
 import { Titulo } from '../componentes/Titulo'
 
 export default function Consultas(){

@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
-import {
-  VStack, Box, Text, Divider, HStack, Image, Spacer, Icon
-} from 'native-base';
+import { VStack, Text, HStack, FlatList } from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
-import Swiper from 'react-native-swiper';
 
 import { Titulo } from '../componentes/Titulo';
 import { produtos } from '../utils/mock';
+import { Botao } from '../componentes/Botao';
+import { CardProduto } from '../componentes/CardProduto';
 
 export default function Principal() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleAdicionarProduto = (produto: { id?: number; titulo: any; preco?: string; imageUrl?: string; rating?: number; promotion?: string; }) => {
+    // Faça algo com o produto, como exibir um alerta com o nome do produto
+    alert(`Produto adicionado: ${produto.titulo}`);
+  };
 
   const renderStars = (rating: number) => {
     let stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(
-        <Icon
-          as={MaterialIcons}
+        <MaterialIcons
           name={i <= rating ? 'star' : 'star-border'}
-          color="yellow.400"
-          size="sm"
+          color="yellow"
+          size={20}
           key={i}
         />
       );
@@ -36,58 +39,33 @@ export default function Principal() {
             marginTop={15}
             key={index}
             onPress={() => setActiveIndex(index)}
-            fontSize="20"
-            marginLeft='2'
+            fontSize={20}
+            marginLeft={2}
             fontWeight={activeIndex === index ? "bold" : "normal"}
             borderBottomWidth={activeIndex === index ? 1 : 0}
             borderBottomColor={activeIndex === index ? 'gray.800' : 'transparent'}
             color={activeIndex === index ? 'black' : 'gray.500'}
+            paddingRight={4}
           >
             {categoria.categoria}
           </Text>
         ))}
       </HStack>
 
-      <Swiper
-        loop={false}
-        showsButtons={false}
-        showsPagination={false}
-        index={activeIndex}
-        onIndexChanged={(index) => setActiveIndex(index)}
-      >
-        {produtos.map((categoria, categoriaIndex) => (
-          <VStack key={categoria.categoria} space={3} divider={<Divider />} w="100%">
-            {categoria.items.map((produto, produtoIndex) => (
-              <Box
-                key={produto.id}
-                w="100%"
-                borderRadius="lg"
-                p={3}
-                bg="gray.50"
-                mb={produtoIndex < categoria.items.length - 1 ? 4 : 0}
-              >
-                <VStack space={3}>
-                  <Image
-                    source={{ uri: produto.imageUrl }}
-                    alt={produto.titulo}
-                    size="lg"
-                    borderRadius="lg"
-                  />
-                  <Text color="gray.700" fontWeight="bold" fontSize="lg">
-                    {produto.titulo}
-                  </Text>
-                  <Text color="gray.500" fontSize="md">{produto.preco}</Text>
-                  <HStack>
-                    {renderStars(produto.rating)}
-                    <Spacer />
-                    <Text color="green.500">{produto.promotion}</Text>
-                  </HStack>
-                </VStack>
-              </Box>
-            ))}
-          </VStack>
-        ))}
-      </Swiper>
+      <FlatList
+        data={produtos[activeIndex]?.items || []}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <CardProduto
+            titulo={item.titulo}
+            imageUrl={item.imageUrl}
+            preco={item.preco}
+            rating={item.rating}
+            promotion={item.promotion}
+            onAdicionarProduto={() => handleAdicionarProduto(item)}
+          />
+        )}
+      />
     </VStack>
   );
 }
