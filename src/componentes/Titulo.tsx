@@ -8,7 +8,7 @@ interface TituloProps extends ITextProps {
 export function Titulo({ children, ...rest }: TituloProps){
   return (
     <Text
-        fontSize="20"
+        fontSize="15"
         fontWeight="bold"
         color="black"
         textAlign="center"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { VStack, Image, Text, Box, Link, Flex, View, HStack, Divider } from 'native-base';
-import { TouchableOpacity } from 'react-native';
+import { VStack, Image, Text, Box, Link, Flex, View, HStack, Divider, Center } from 'native-base';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import Logo from './assets/google21.jpg';
 import { Botao } from './componentes/Botao';
 import { EntradaTexto } from './componentes/EntradaTexto';
@@ -34,56 +34,80 @@ export default function Login({ navigation }: any) {
   const [selectedTab, setSelectedTab] = useState<'login' | 'register'>('login');
 
   return (
-    <VStack flex={1} p={5}>
-    <VStack 
-        flex={1} 
-        alignItems="center" 
-        justifyContent="center" 
-        backgroundColor="white" 
-        borderRadius="40"  // Bordas arredondadas
+    <ScrollView>
+    <VStack
+      flex={1}
+      alignItems="center"
+      justifyContent="center"
+      backgroundColor="white"
+      borderRadius={45} // Bordas arredondadas
+      margin={5}
+      p={5}
     >
-        <Image source={Logo} alt="Logo Voll" alignSelf="center" />
+      <Center>
+        <Image source={Logo} alt="Logo Voll" mb={12} marginTop={10}/>
+      </Center>
 
-        <HStack space={4} mt={5} justifyContent="center">
-            <TouchableOpacity onPress={() => setSelectedTab('login')}>
-                <Text fontSize={24} borderBottomWidth={selectedTab === 'login' ? 2 : 0} borderBottomColor="blue.500">Login</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setSelectedTab('register')}>
-                <Text fontSize={24} borderBottomWidth={selectedTab === 'register' ? 2 : 0} borderBottomColor="blue.500">Cadastro</Text>
-            </TouchableOpacity>
-        </HStack>
+      <HStack space={4} mt={5} mb={-5}>
+        <TouchableOpacity onPress={() => setSelectedTab('login')}>
+          <Titulo 
+          marginRight={50}
+            fontSize={17}
+            borderBottomWidth={selectedTab === 'login' ? 2 : 0}
+            borderBottomColor={selectedTab === 'login' ? 'orange.600' : 'blue.500'} // Cor laranja escuro quando selecionado
+          >
+            Login
+          </Titulo>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelectedTab('register')}>
+          <Titulo
+            marginLeft={50}
+            fontSize={17}
+            borderBottomWidth={selectedTab === 'register' ? 2 : 0}
+            borderBottomColor={selectedTab === 'register' ? 'orange.600' : 'blue.500'} // Cor laranja escuro quando selecionado
+          >
+            Cadastro
+          </Titulo>
+        </TouchableOpacity>
+      </HStack>
     </VStack>
-    <Divider mt={3} />
 
-      {selectedTab === 'login' && (
-        <Box flex={1} alignItems="center" justifyContent="center">
-      
-          <Box>
-            <EntradaTexto label="Email" placeholder="Insira seu endereço de e-mail" />
-            <EntradaTexto label="Senha" placeholder="Insira sua senha" />
-          </Box>
-
-          <Botao onPress={() => navigation.navigate('Tabs')}>Entrar</Botao>
-
-         
-
-          <Link href='https://www.alura.com.br' mt={2}>Esqueceu sua senha?</Link>
+    {selectedTab === 'login' && (
+      <VStack
+        flex={1}
+        alignItems="center"
+        justifyContent="center"
+        margin={5}
+      >
+        <Box width="100%">
+          <EntradaTexto label="Email" placeholder="Insira seu endereço de e-mail" />
+          <EntradaTexto label="Senha" placeholder="Insira sua senha" />
         </Box>
-      )}
 
-      {selectedTab === 'register' && (
-        <Box flex={1} alignItems="center" justifyContent="center">
- 
+        <Botao onPress={() => navigation.navigate('Tabs')}>Entrar</Botao>
 
-          <Box>
-            <EntradaTexto label="Nome" placeholder="Insira seu nome completo" />
-            <EntradaTexto label="Email" placeholder="Insira seu endereço de e-mail" />
-            <EntradaTexto label="Senha" placeholder="Insira uma senha" />
-          </Box>
+        <Link href='https://www.alura.com.br' mt={2}>Esqueceu sua senha?</Link>
+      </VStack>
+    )}
 
-          <Botao onPress={() => navigation.navigate('Tabs')}>Cadastrar</Botao>
+    {selectedTab === 'register' && (
+      <VStack
+        flex={1}
+        alignItems="center"
+        justifyContent="center"
+        margin={5}
+      >
+        <Box width="100%">
+          <EntradaTexto label="Nome" placeholder="Insira seu nome completo" />
+          <EntradaTexto label="Email" placeholder="Insira seu endereço de e-mail" />
+          <EntradaTexto label="Senha" placeholder="Insira uma senha" />
+          <EntradaTexto label="Confirma Senha" placeholder="Confirma senha" />
         </Box>
-      )}
-    </VStack>
+
+        <Botao onPress={() => navigation.navigate('Tabs')}>Cadastrar</Botao>
+      </VStack>
+    )}
+  </ScrollView>
   );
 }
+  
