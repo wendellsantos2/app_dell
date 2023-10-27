@@ -6,11 +6,7 @@ import { Botao } from './componentes/Botao';
 import { EntradaTexto } from './componentes/EntradaTexto';
 import { Titulo } from './componentes/Titulo';
  
-import { SocialIcon } from 'react-native-elements'; // Importe o SocialIcon
-import Icon from 'react-native-vector-icons/FontAwesome'; // Importe o ícone do Twitter
-
- 
-
+  
 export default function Login({ navigation }: any) {
   // Função para fazer login com o Google
   const loginWithGoogle = async () => {

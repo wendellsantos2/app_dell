@@ -1,4 +1,35 @@
 const produtos = [
+ 
+  {
+    categoria: 'Comida',
+    items: [
+      {
+        id: 2,
+        titulo: 'Produto',
+        preco: '30,00R$',
+        imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
+        rating: 4.0,
+        promotion: '5% OFF'
+      },
+      {
+        id: 3,
+        titulo: 'Produto',
+        preco: '30,00R$',
+        imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
+        rating: 4.0,
+        promotion: '5% OFF'
+      },
+      {
+        id: 4,
+        titulo: 'Produto',
+        preco: '30,00R$',
+        imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
+        rating: 4.0,
+        promotion: '5% OFF'
+      },
+      // ... outros produtos de comida
+    ]
+  } ,
   {
     categoria: 'Cerveja',
     items: [
@@ -36,37 +67,6 @@ const produtos = [
       },
     ]
   },
-  {
-    categoria: 'Comida',
-    items: [
-      {
-        id: 2,
-        titulo: 'Produto',
-        preco: '30,00R$',
-        imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
-        rating: 4.0,
-        promotion: '5% OFF'
-      },
-      {
-        id: 3,
-        titulo: 'Produto',
-        preco: '30,00R$',
-        imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
-        rating: 4.0,
-        promotion: '5% OFF'
-      },
-      {
-        id: 4,
-        titulo: 'Produto',
-        preco: '30,00R$',
-        imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
-        rating: 4.0,
-        promotion: '5% OFF'
-      },
-      // ... outros produtos de comida
-    ]
-  }
-  , 
    {
     categoria: 'Sobremessa',
     items: [
@@ -76,7 +76,8 @@ const produtos = [
         preco: '35,00R$',
         imageUrl: 'https://www.socialbauru.com.br/wp-content/uploads/2019/09/sobremesa-premio-impera-bauru-1240x540.png',
         rating: 4.3,
-        promotion: '15% OFF'
+        promotion: '15% OFF',
+        quantidade:4
       },
       {
         id: 4,
@@ -100,4 +101,20 @@ const produtos = [
   ,
 ]
 
-export { produtos };
+const carrinhoMock = [
+  {
+    id:1,
+    nome: 'Produto 1',
+    preco: 30.00,
+    quantidade: 2,
+  },
+  {
+    id:2,
+    nome: 'Produto 2',
+    preco: 25.00,
+    quantidade: 1,
+  },
+];
+
+
+export { produtos ,carrinhoMock};

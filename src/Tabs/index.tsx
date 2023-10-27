@@ -23,14 +23,14 @@ const tabs = [
     icon: 'home'
   },
   {
-    name: 'Consultas',
+    name: 'Pedidos',
     component: Consultas,
-    icon: 'calendar'
+    icon: 'wallet-outline'
   },
   {
-    name: 'Explorar',
+    name: 'histórico',
     component: Explorar,
-    icon: 'search'
+    icon: 'time-outline'
   },
   {
     name: 'Perfil',
