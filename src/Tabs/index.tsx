@@ -12,8 +12,8 @@ const screenOptions = {
   tabBarStyle: {
     backgroundColor: "#FFFFFF" // Mudando a cor de fundo para branco
   },
-  tabBarActiveTintColor: "#FF8A00", // Cor laranja para o ícone ativo
-  tabBarInactiveTintColor: "#FF8A00" // Cor laranja para o ícone inativo
+  tabBarActiveTintColor: "black", // Cor laranja para o ícone ativo
+  tabBarInactiveTintColor: "black" // Cor laranja para o ícone inativo
 }
 
 const tabs = [

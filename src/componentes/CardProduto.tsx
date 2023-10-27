@@ -18,7 +18,7 @@ export function CardProduto({
       p={4}
       borderRadius="lg"
       shadow={2}
-      mb={4}
+      mb={1}
       borderColor="gray.200"
       borderWidth={1} // Adicione uma borda para destacar o cartão
     >
@@ -33,7 +33,7 @@ export function CardProduto({
       />
 
       {/* Conteúdo do cartão */}
-      <VStack mt={4} space={2}>
+      <VStack>
         <Text fontSize="xl" bold>
           {titulo}
         </Text>
@@ -43,20 +43,20 @@ export function CardProduto({
         <Text fontSize="md" color="gray.500">
           {promotion}
         </Text>
-      </VStack>
-
-   
-      <HStack justifyContent="flex-start" mt={4}>
-      <Botao onPress={onAdicionarProduto} background='#FF8A00' >
+        <HStack justifyContent="flex-start" mt={1}>
+        <Botao onPress={onAdicionarProduto} background='#FA4A0C'>
           Ver Produto
         </Botao>
-        </HStack>
-      <HStack justifyContent="flex-start" mt={4}>
-  
-        <Botao onPress={onAdicionarProduto} background='#FF8A00' mt={3}>
+      </HStack>
+      <HStack justifyContent="flex-start" mt={1}>
+        <Botao onPress={onAdicionarProduto} background='#FA4A0C' mt={1}>
           Adicionar Produto
         </Botao>
       </HStack>
+      </VStack>
+
+   
+   
     </Box>
   );
 }

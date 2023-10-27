@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { VStack, Text, HStack, FlatList } from 'native-base';
-import { MaterialIcons } from '@expo/vector-icons';
-
+import { VStack, Text, HStack, FlatList, Icon, Image } from 'native-base';
 import { Titulo } from '../componentes/Titulo';
 import { produtos } from '../utils/mock';
-import { Botao } from '../componentes/Botao';
 import { CardProduto } from '../componentes/CardProduto';
-
+import Carrinho from '../assets/shopping-cart.png'
+import Vector from '../assets/Vector.png'
+import { TouchableOpacity } from 'react-native';
+import { SearchBar } from '../componentes/Search';
 export default function Principal() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -15,37 +15,49 @@ export default function Principal() {
     alert(`Produto adicionado: ${produto.titulo}`);
   };
 
-  const renderStars = (rating: number) => {
-    let stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <MaterialIcons
-          name={i <= rating ? 'star' : 'star-border'}
-          color="yellow"
-          size={20}
-          key={i}
-        />
-      );
-    }
-    return stars;
-  };
-
+   
   return (
     <VStack flex={1} alignItems="flex-start" justifyContent="flex-start" p={5}>
-      <Titulo color="black">Bastilha BarMarket!</Titulo>
+
+   <HStack justifyContent="space-between" width="100%">
+    <Image
+    source={Vector}
+   
+    size="7"
+    resizeMode="contain"
+  
+  />
+  <Titulo color="black">Bastilha BarMarket!</Titulo>
+
+  <TouchableOpacity>
+  <Image
+    source={Carrinho}
+    alt="Carrinho de Compras"
+    size="7"
+    resizeMode="contain"
+    right="10"
+    top="1"
+  />
+  </TouchableOpacity>
+</HStack>
+<Text mt={10}>Comidas Gostosas aqui </Text>
+      <HStack space={5} marginTop={0}>
+      <SearchBar/>
+      </HStack>
       <HStack space={4} marginTop={5}>
         {produtos.map((categoria, index) => (
           <Text
-            marginTop={15}
+            marginTop={3}
             key={index}
             onPress={() => setActiveIndex(index)}
-            fontSize={20}
+            fontSize={17}
             marginLeft={2}
             fontWeight={activeIndex === index ? "bold" : "normal"}
             borderBottomWidth={activeIndex === index ? 1 : 0}
-            borderBottomColor={activeIndex === index ? 'gray.800' : 'transparent'}
-            color={activeIndex === index ? 'black' : 'gray.500'}
+            borderBottomColor={activeIndex === index ? 'orange.500' : 'transparent'}
+            color={activeIndex === index ? 'black' : 'orange'}
             paddingRight={4}
+            
           >
             {categoria.categoria}
           </Text>
