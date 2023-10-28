@@ -6,18 +6,22 @@ export function SearchBar(props) {
     <HStack
       width="100%"
       borderWidth={1}
-      borderRadius={25} // Ajustado para deixar mais redondo
-      borderColor="gray.300"
+      borderRadius={50} // Aumentando o borderRadius para torná-lo mais redondo
+      borderColor="transparent"
       alignItems="center"
       paddingLeft={2}
-      {...props} // Espalhe props para permitir propriedades adicionais como marginTop, etc.
+      {...props} 
     >
-      <Icon name="search" size={20} color="gray" />
       <Input
-        flex={1}  // Faz com que o Input ocupe todo o espaço disponível
+        flex={1}
         placeholder="Pesquisar..."
         paddingLeft={2}
-        variant="unstyled" // Remove o estilo padrão para se misturar com o contêiner
+        borderRadius={25}
+        bg="gray.200"
+        variant="unstyled"
+        InputLeftElement={ // Adicionando o ícone à esquerda do Input
+          <Icon name="search" size={20} color="gray" style={{ marginLeft: 5 }} />
+        }
       />
     </HStack>
   );

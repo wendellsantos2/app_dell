@@ -1,27 +1,37 @@
 import React from "react";
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-const Tab = createNativeStackNavigator();
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import Login from "./Login";
 import Tabs from "./Tabs";
 import Carrinho from "./Tabs/Carrinho";
+import QRCodeComponent from './Tabs/QrCode';
+
+const Stack = createNativeStackNavigator();
 
 export default function Rotas(){
-  return(
+  return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen 
-          name="Login" component={Login} options={{ headerShown: false }}
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Login" 
+          component={Login} 
+          options={{ headerShown: false }}
         />
-        <Tab.Screen 
-          name="Tabs" component={Tabs} options={{ headerShown: false }}
+        <Stack.Screen 
+          name="Tabs" 
+          component={Tabs} 
+          options={{ headerShown: false }}
         />
-        <Tab.Screen 
-    name="Carrinho" 
-    component={Carrinho}
-/>
-        
-      </Tab.Navigator>
+        <Stack.Screen 
+          name="Carrinho" 
+          component={Carrinho}
+        />
+        <Stack.Screen 
+          name="QRCodePage" 
+          component={QRCodeComponent} 
+        />
+      </Stack.Navigator>
     </NavigationContainer>
-  )
+  );
 }

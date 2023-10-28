@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { VStack, Text, HStack, FlatList, Image } from 'native-base';
+import { VStack, Text, HStack, FlatList, Image,ScrollView  } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 
 import { Titulo } from '../componentes/Titulo';
@@ -24,14 +24,8 @@ export default function Principal() {
   return (
     <VStack flex={1} alignItems="flex-start" justifyContent="flex-start" p={5}>
       <HStack justifyContent="space-between" width="100%">
-        <TouchableOpacity>
-          <Image
-            source={Vector}
-            size="6"
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-        <Titulo color="black">Bastilha BarMarket!</Titulo>
+         
+        <Titulo color="black" mb={10} >Bastilha BarMarket!</Titulo>
         <TouchableOpacity onPress={exibirCarrinho}>
   <Image
     source={Carrinho}
@@ -39,11 +33,10 @@ export default function Principal() {
     size="6"
     resizeMode="contain"
     right="11"
-    top="1"
+    top="5"
   />
 </TouchableOpacity>
       </HStack>
-      <Text mt={3} bold>Escolha sua comida aqui !</Text>
       <HStack space={5} marginTop={0}>
         <SearchBar />
       </HStack>
@@ -52,6 +45,7 @@ export default function Principal() {
           <Text
             marginTop={3}
             key={index}
+            marginRight={5}
             onPress={() => setActiveIndex(index)} // Define o estado ativo ao clicar
             fontSize={17}
             marginLeft={2}
@@ -66,6 +60,7 @@ export default function Principal() {
         ))}
       </HStack>
       <FlatList
+        marginTop={5}
         data={produtos[activeIndex]?.items || []}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (

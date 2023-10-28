@@ -1,20 +1,21 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Principal from "./Principal";
-import Consultas from "./Consultas";
+import Consultas from "./Pedidos";
 import Explorar from "./Explorar";
 import Perfil from "./Perfil";
+import Pedidos from './Pedidos';
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 const screenOptions = {
   tabBarStyle: {
-    backgroundColor: "#FFFFFF" // Mudando a cor de fundo para branco
+    backgroundColor: "#FFFFFF" // Cor de fundo da tabBar como branco
   },
-  tabBarActiveTintColor: "black", // Cor laranja para o ícone ativo
-  tabBarInactiveTintColor: "black" // Cor laranja para o ícone inativo
-}
+  tabBarActiveTintColor: "black", // Cor preta para o ícone ativo (selecionado)
+  tabBarInactiveTintColor: "gray" // Cor branca para o ícone inativo (não selecionado)
+};
 
 const tabs = [
   {
@@ -24,7 +25,7 @@ const tabs = [
   },
   {
     name: 'Pedidos',
-    component: Consultas,
+    component: Pedidos,
     icon: 'wallet-outline'
   },
   {
@@ -37,7 +38,7 @@ const tabs = [
     component: Perfil,
     icon: 'person'
   },
-]
+];
 
 export default function Tabs() {
   return (
@@ -54,8 +55,7 @@ export default function Tabs() {
             )
           }}
         />
-      ))
-      }
+      ))}
     </Tab.Navigator>
-  )
+  );
 }
