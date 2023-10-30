@@ -2,10 +2,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Principal from "./Principal";
-import Consultas from "./Pedidos";
-import Explorar from "./Explorar";
+ 
 import Perfil from "./Perfil";
 import Pedidos from './Pedidos';
+import Historico from "./Historico";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +30,7 @@ const tabs = [
   },
   {
     name: 'histórico',
-    component: Explorar,
+    component: Historico,
     icon: 'time-outline'
   },
   {

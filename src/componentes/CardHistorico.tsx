@@ -3,7 +3,7 @@ import { Text, VStack, Image, HStack, Box } from 'native-base'; // Remova o Avat
 
 import { Botao } from './Botao';
 
-export function CardProduto({
+export function CardHistorico({
   id,
   titulo,
   imageUrl,
@@ -46,14 +46,10 @@ export function CardProduto({
         </Text>
         <HStack justifyContent="flex-start" mt={1}>
         <Botao onPress={'2'} background='#FA4A0C'>
-          Ver Produto
+          Ver Detalhe do pedido
         </Botao>
       </HStack>
-      <HStack justifyContent="flex-start" mt={1}>
-        <Botao onPress={'2'} background='#FA4A0C' mt={1}>
-          Adicionar Produto
-        </Botao>
-      </HStack>
+     
       </VStack>
 
    

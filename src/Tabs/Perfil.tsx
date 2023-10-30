@@ -49,6 +49,15 @@ export default function Perfil({ navigation }) {
 </Botao>
 <Botao color='white'>
   <HStack alignItems="center" spacing={2}>
+    <Text color={'black'} bold ml={15} >Jogos Bastilha</Text>  
+    <IconButton 
+        icon={<ChevronRightIcon size="4" color="black" ml={200} />} 
+        variant="unstyled"
+    />
+  </HStack>
+</Botao>
+<Botao color='white'>
+  <HStack alignItems="center" spacing={2}>
     <Text color={'black'} bold ml={15}>Faq</Text>  
     <IconButton 
         icon={<ChevronRightIcon size="4" color="black" ml={200} />} 
@@ -58,7 +67,7 @@ export default function Perfil({ navigation }) {
 </Botao>
 <Botao color='white'>
   <HStack alignItems="center" spacing={2}>
-    <Text color={'black'} bold ml={15}>Help</Text>  
+    <Text color={'black'} bold ml={15} >Sair</Text>  
     <IconButton 
         icon={<ChevronRightIcon size="4" color="black" ml={200} />} 
         variant="unstyled"

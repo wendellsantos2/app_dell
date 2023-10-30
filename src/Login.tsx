@@ -41,7 +41,7 @@ export default function Login({ navigation }: any) {
       p={5}
     >
       <Center>
-        <Image source={Logo} alt="Logo Voll" mb={12} marginTop={10}/>
+ 
       </Center>
 
       <HStack space={4} mt={5} mb={-5}>

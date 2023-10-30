@@ -5,7 +5,7 @@ const produtos = [
     items: [
       {
         id: 2,
-        titulo: 'Produto',
+        titulo: 'X-salada',
         preco: '30,00R$',
         imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
         rating: 4.0,
@@ -13,11 +13,11 @@ const produtos = [
       },
       {
         id: 3,
-        titulo: 'Produto',
-        preco: '30,00R$',
-        imageUrl: 'https://content.news.ifood.com.br/uploads/2023/05/ifn-capa-hamb.webp',
-        rating: 4.0,
-        promotion: '5% OFF'
+        titulo: 'Cherry Healthy',
+        preco: '25,00R$',
+        imageUrl:  'https://cdn.b4c.inf.br/storage/acouguebg/1000/cerveja-corona-330ml_1_1627697666.jpg',
+        rating: 4.5,
+        promotion: '10% OFF'
       },
       {
         id: 4,

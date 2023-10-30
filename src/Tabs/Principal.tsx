@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { VStack, Text, HStack, FlatList, Image,ScrollView  } from 'native-base';
+import { VStack, Text, HStack, FlatList, Image  } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 
 import { Titulo } from '../componentes/Titulo';
@@ -10,6 +10,7 @@ import { produtos } from '../utils/mock';
 
 import Carrinho from '../assets/shopping-cart.png';
 import Vector from '../assets/Vector.png';
+import { Botao } from '../componentes/Botao';
 
 export default function Principal() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -70,10 +71,12 @@ export default function Principal() {
             preco={item.preco}
             rating={item.rating}
             promotion={item.promotion}
-            onAdicionarProduto={undefined}
+            id={item.id}             
           />
+          
         )}
       />
+      
     </VStack>
   );
 }
