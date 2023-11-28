@@ -24,17 +24,31 @@ interface DecodedToken {
   // ... (other properties from your token)
 }
 
+interface CreateUser {
+  name: string;
+  email: string;
+  cpf: string;
+  password: string;
+  role: string;
+  idClienteAsaas: string;
+}
+
+
+
 export default function Login({ navigation }: any) {
   const [username, setUsername] = useState('');
-  const [nome, setNome] = useState('');
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
   const [password, setSenha] = useState('');
   const [carregando, setCarregando] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [mostrarCadastro, setMostrarCadastro] = useState(true);
-
-
+  const [role, setRole] = useState('');
   const toast = useToast();
+
+
+
   const logout = async () => {
     await AsyncStorage.removeItem('token'); // Remove the token from storage
     // Navigate to the login screen or another appropriate screen
@@ -59,35 +73,53 @@ export default function Login({ navigation }: any) {
     verificarLogin(); // Chame a função diretamente
   }, [navigation]);
   
+
+ 
   const handleCadastro = async () => {
-    // Verifique se os campos não estão vazios
-    if (!nome || !email || !password) {
+  
+    
+    if (!name || !email || !cpf || !password) {
       alert('Por favor, preencha todos os campos.');
       return;
     }
-
-    // Estrutura do objeto a ser enviado
-    const usuario = {
-      nome,
-      email,
-      password,
+    const usuario: CreateUser = {
+      name: name,
+      email: email,
+      cpf: cpf,
+      password: password,
+      role: 'cliente',
+      idClienteAsaas:''
     };
-
+    
+  
     try {
       // Aqui você pode fazer a chamada para o seu backend. Exemplo:
-      const response = await fetch('http://192.168.0.145:3000/user', {
+      const response = await fetch('http://192.168.0.145:3000/user/create-client', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(usuario),
       });
-
+  
       const data = await response.json();
-
+  
       // Trate a resposta do servidor conforme necessário
       if (response.ok) {
+
+        const userId = data.id;
+      
+        usuario.idClienteAsaas = userId
+        const response = await fetch('http://192.168.0.145:3000/user', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(usuario),
+        });
+        
         alert('Cadastro realizado com sucesso!');
+        
         // Aqui você pode redirecionar para a tela de login ou fazer login automaticamente
       } else {
         // Trate erros de resposta (como email já existente)
@@ -196,7 +228,7 @@ export default function Login({ navigation }: any) {
 
   return (
    <VStack flex={1} alignItems="center" p={5}>
-      {/* Botões para alternar entre Login e Cadastro */}
+     
       <Box flexDirection="row" justifyContent="center" mb={5}>
   <Text
     onPress={() => setMostrarCadastro(false)}
@@ -214,7 +246,6 @@ export default function Login({ navigation }: any) {
     mt={20}
     fontWeight={mostrarCadastro ? "bold" : "normal"}
     color={mostrarCadastro ? "blue.500" : "gray.400"}
-     
   >
     Cadastro
   </Text>
@@ -223,11 +254,18 @@ export default function Login({ navigation }: any) {
       {/* Formulário de Cadastro ou Login */}
       {mostrarCadastro ? (
         <>
-          <Titulo color="blue.500">Cadastre-se</Titulo>
+        <Titulo color="blue.500">Cadastre-se</Titulo>
           <Box>
-            <EntradaTexto label='Nome' placeholder='Insira seu nome' value={nome} onChangeText={setNome} />
+            <EntradaTexto label='Nome' placeholder='Insira seu nome' value={name} onChangeText={setName} />
+            <EntradaTexto label='Cpf' placeholder='Insira seu cpf' value={cpf} onChangeText={setCpf} />
             <EntradaTexto label='Email' placeholder='Insira seu endereço de email' value={email} onChangeText={setEmail} />
-            <EntradaTexto label='Senha' placeholder='Insira sua senha' secureTextEntry={!showPassword} value={password} onChangeText={setSenha} />
+            <EntradaTexto
+              label='Senha'
+              placeholder='Insira sua senha'
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setSenha}
+            />
           </Box>
           <Botao w="100%" bg="blue.800" mt={10} borderRadius="lg" onPress={handleCadastro}>
             Cadastrar
